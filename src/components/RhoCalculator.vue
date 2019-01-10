@@ -149,7 +149,12 @@
 
           <div class="form-group row">
             <div class="col col-12 text-right">
-              <LocationButton :loading="loadingLocation" v-on:click.native="getLocation"></LocationButton>
+              <LoadingButton
+                :loading="loadingLocation"
+                caption="My Location"
+                loadingCaption="Please wait..."
+                v-on:click.native="getLocation"
+              ></LoadingButton>
               <button type="submit" class="btn btn-success">
                 <font-awesome-icon icon="check"/>&nbsp;Calculate
               </button>
@@ -165,14 +170,14 @@
 /* eslint-disable */
 import { required, decimal } from "vuelidate/lib/validators";
 import WeatherService from "../services/weather";
-import LocationButton from "./LocationButton";
+import LoadingButton from "./LoadingButton";
 
 const weatherService = new WeatherService();
 
 export default {
   name: "RhoCalculator",
   components: {
-    LocationButton
+    LoadingButton
   },
   data() {
     return {
